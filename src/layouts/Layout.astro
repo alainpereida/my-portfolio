@@ -1,0 +1,40 @@
+---
+import Seo from '../components/Seo.astro';
+
+const { image, frontmatter, robots } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<Seo url={Astro.url} {image} {frontmatter} {robots} />
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+<style is:global>
+	html {
+		font-family: "GroteskLight", system-ui, sans-serif;
+		background: #13151a;
+		color: white;
+	}
+	@font-face {
+		font-family: "GroteskLight";
+		src: url("../fonts/akzidenz-grotesk-light.ttf");
+		font-weight: lighter;
+		font-style: normal;
+		font-display: swap;
+	}
+
+	@font-face {
+		font-family: "GroteskBold";
+		src: url("../fonts/akzidenz-grotesk-bold.ttf");
+		font-weight: bold;
+		font-style: normal;
+		font-display: swap;
+	}
+</style>

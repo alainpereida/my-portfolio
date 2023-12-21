@@ -1,0 +1,119 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Project from "../components/Project.astro";
+import GithubIcon from "../icons/GithubIcon.astro";
+import LinkedinIcon from "../icons/LinkedinIcon.astro";
+
+import technologies from "../data/technologies";
+---
+
+<Layout title="Alain Pereida Prado">
+  <main class="h-screen">
+    <section
+      id="profile"
+      class="bg-gray-900 h-full text-white w-full md:px-12 md:py-20 lg:px-24 lg:py-0"
+    >
+      <div class="h-full container mx-auto md:container px-8 grid items-center">
+        <div class="grid grid-cols-1 md:grid-cols-2">
+          <div id="home" class="mt-14 mx-14 text-end">
+            <h1 class="text-5xl font-bold">
+              Soy <span class="text-secondary">Alain Pereida Prado</span>
+            </h1>
+            <h2 class="text-2xl font-bold text-secondary">Desarrollador Web</h2>
+
+            <h2 class="text-xl mt-2">
+              + 3 años de experiencia en el desarrollo de aplicaciones web y
+              backend.
+            </h2>
+            <button
+              class="bg-secondary rounded-lg text-black font-bold my-6 py-4 px-8"
+              >Descarga mi CV</button
+            >
+          </div>
+
+          <div class="text-center md:text-start">
+            <div class="flex justify-center md:justify-start">
+              <img
+                class="rounded-2xl my-6"
+                src="img/alain.png"
+                alt="Author Page"
+                width="350"
+              />
+            </div>
+            <div
+              id="social-networks"
+              class="flex fill-white justify-center gap-5 transition-all md:justify-start"
+            >
+              <a
+                href="https://github.com/alainpereida"
+                target="_blank"
+                class="transition hover:fill-secondary"
+              >
+                <GithubIcon />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/alain-pereida-prado-64b45b1b7"
+                target="_blank"
+                class="transition hover:fill-secondary"
+              >
+                <LinkedinIcon />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section
+      class="mx-auto max-w-screen-xl py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+    >
+      <h2 class="text-6xl font-bold text-center my-8">Proyectos</h2>
+
+      <div class="grid gap-6 grid-cols-1 md:grid-cols-1">
+        <Project
+          title="Presta"
+          description="Desarrollo y despliegue de un portla web app para el control de préstamos de materíal de laboratorio en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+          href="https://yaqui.mxl.uabc.mx/login"
+          image="img/presta.png"
+          technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
+        />
+
+        <Project
+          title="Sistema de Indicadores Académicos"
+          description="Integración en desarrollo, mantenimiento y despliegue de un sistema de indicadores académicos para el Instituto de Ingeniería en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+          image="img/sistema-de-indicadores-académicos.png"
+          technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
+        />
+
+        <Project
+          title="DigiTabWeb"
+          description="Desarrollo y despliegue de un portal web para la gestión de publicaciones en el Instituto de Ingeniería UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+          image="img/instituto-de-ingeniería.png"
+          href="http://nova.mxl.uabc.mx/view/ii"
+          technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
+        />
+      </div>
+    </section>
+
+    <section class="bg-gray-900 w-full inline-block pb-12">
+      <div
+        class="h-full mx-auto max-w-screen-xl py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+      >
+        <h2 class="text-6xl font-bold text-center my-8">Skills</h2>
+
+        <div>
+          <ul class="mt-2 flex flex-wrap" aria-label="Technologies know:">
+            {
+              technologies.map((tech) => (
+                <li class="mr-1.5 mt-2">
+                  <div class="flex items-center rounded-full bg-teal-400/10 px-6 py-3 text-2xl font-light leading-5 text-teal-300">
+                    {tech.tech}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
