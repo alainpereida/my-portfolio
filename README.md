@@ -18,15 +18,40 @@ Inside of your Astro project, you'll see the following folders and files:
 
 ```text
 /
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+├───public/
+│   │   favicon.svg
+│   │   robots.txt
+│   ├───documents/
+│   │       Alain Pereida Prado - CV.pdf
+│   ├───fonts/
+│   │       akzidenz-grotesk-bold.ttf
+│   │       akzidenz-grotesk-light.ttf
+│   └───img/
+│       │   alain.png
+│       │   instituto-de-ingeniería.png
+│       │   presta.png
+│       │   sistema-de-indicadores-académicos.png
+│       └───Firma
+│               Alain.png
+│               g-mail_0001_ALAIN (1).png
+│               g-mail_0001_ALAIN.png
+│               image-alain.png
+├───src/
+│   │   env.d.ts
+│   ├───components/
+│   │       Project.astro
+│   │       Seo.astro
+│   ├───data/
+│   │       site.json
+│   │       technologies.ts
+│   ├───icons/
+│   │       GithubIcon.astro
+│   │       LinkedinIcon.astro
+│   │       RowIcon.astro
+│   ├───layouts/
+│   │       Layout.astro
+│   └───pages/
+│           index.astro
 └── package.json
 ```
 
