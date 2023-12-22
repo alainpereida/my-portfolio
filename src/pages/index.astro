@@ -8,7 +8,7 @@ import technologies from "../data/technologies";
 ---
 
 <Layout title="Alain Pereida Prado">
-  <main class="h-screen">
+  <main class="h-screen ">
     <section
       id="profile"
       class="bg-gray-900 h-full text-white w-full md:px-12 md:py-20 lg:px-24 lg:py-0"
@@ -98,21 +98,96 @@ import technologies from "../data/technologies";
       <div
         class="h-full mx-auto max-w-screen-xl py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
       >
-        <h2 class="text-6xl font-bold text-center my-8">Skills</h2>
+        <h2 class="text-6xl font-bold text-center my-8">Experiencia</h2>
 
         <div>
-          <ul class="mt-2 flex flex-wrap" aria-label="Technologies know:">
-            {
-              technologies.map((tech) => (
-                <li class="mr-1.5 mt-2">
-                  <div class="flex items-center rounded-full bg-teal-400/10 px-6 py-3 text-2xl font-light leading-5 text-teal-300">
-                    {tech.tech}
-                  </div>
-                </li>
-              ))
-            }
-          </ul>
+          <ol class="relative border-s border-secondary">
+            <li class="mb-10 ms-4">
+              <div
+                class="absolute w-3 h-3 bg-secondary rounded-full mt-1.5 -start-1.5 border border-secondary"
+              >
+              </div>
+              <time
+                class="mb-1 text-sm font-normal leading-none text-gray-400"
+                >Septiembre 2022 - Actual</time
+              >
+              <h3 class="text-lg font-semibold text-secondary">
+                Web Developer | <span class="text-white">Pixzelle Studio</span>
+              </h3>
+              <p
+                class="mb-4 text-base font-normal text-white leading-6"
+                style="text-wrap: balance;"
+              >
+                Participación en desarrollo de software, usando soluciones monolíticas y
+                microservicios, entregando desarrollos de RESTful API con más de 100,000
+                usuarios, configuración de optimización de los recursos de servidores, uso de
+                scrum.
+              </p>
+            </li>
+            <li class="mb-10 ms-4">
+              <div
+                class="absolute w-3 h-3 bg-secondary rounded-full mt-1.5 -start-1.5 border border-secondary"
+              >
+              </div>
+              <time
+                class="mb-1 text-sm font-normal leading-none text-gray-400"
+                >Octubre 2022 - Agosto 2021</time
+              >
+              <h3 class="text-lg font-semibold text-secondary">
+                Desarrollador de Software | <span class="text-white">Inercy</span>
+              </h3>
+              <p
+                class="mb-4 text-base font-normal text-white leading-6"
+                style="text-wrap: balance;"
+              >
+                Participación en el desarrollo de un sistema de monitoreo de drones autónomos
+                llevándolo a producción, trabajé en una aplicación móvil hecha en android y un
+                sistema web realizado en ASP.NET Core, realizando despliegues de aplicación
+                como capacitación a personal.
+              </p>
+            </li>
+            <li class="mb-10 ms-4">
+              <div
+                class="absolute w-3 h-3 bg-secondary rounded-full mt-1.5 -start-1.5 border border-secondary"
+              >
+              </div>
+              <time
+                class="mb-1 text-sm font-normal leading-none text-gray-400"
+                >Enero 2022 - Marzo 2021</time
+              >
+              <h3 class="text-lg font-semibold text-secondary">
+                Practicante | <span class="text-white">Honeywell</span>
+              </h3>
+              <p
+                class="mb-4 text-base font-normal text-white leading-6"
+                style="text-wrap: balance;"
+              >
+                Elaboración de reportes de alto desempeño con las métricas de la empresa.
+                Encargado de encontrar mejoras en los reportes y proporcionar ideas para nuevos
+                reportes.
+              </p>
+            </li>
+          </ol>
         </div>
+      </div>
+    </section>
+
+    <section
+      class="mx-auto max-w-screen-xl py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+    >
+      <h2 class="text-6xl font-bold text-center my-8">Skills</h2>
+      <div>
+        <ul class="mt-2 flex flex-wrap" aria-label="Technologies know:">
+          {
+            technologies.map((tech) => (
+              <li class="mr-1.5 mt-2">
+                <div class="flex items-center rounded-full bg-teal-400/10 px-6 py-3 text-2xl font-light leading-5 text-teal-300">
+                  {tech.tech}
+                </div>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </section>
   </main>
