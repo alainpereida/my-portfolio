@@ -15,24 +15,44 @@ import technologies from "../data/technologies";
     >
       <div class="h-full container mx-auto md:container px-8 grid items-center">
         <div class="grid grid-cols-1 md:grid-cols-2">
-          <div id="home" class="mt-14 mx-14 text-end">
+          <div id="home" class="md:mt-14 md:mx-14 text-end">
             <h1 class="text-5xl font-bold">
               Soy <span class="text-secondary">Alain Pereida Prado</span>
             </h1>
             <h2 class="text-2xl font-bold text-secondary">Desarrollador Web</h2>
 
-            <h2 class="text-xl mt-2">
+            <h2 class="text-xl mt-2 mb-5">
               + 3 años de experiencia en el desarrollo de aplicaciones web y
               backend.
             </h2>
-            <button
+            <a
+              href="/documents/Alain Pereida Prado - CV.pdf"
+              target="_blank"
               class="bg-secondary rounded-lg text-black font-bold my-6 py-4 px-8"
-              >Descarga mi CV</button
+              >Descarga mi CV</a
             >
+            <div
+              class="flex fill-white mt-6 gap-5 transition-all justify-end md:hidden"
+            >
+              <a
+                href="https://github.com/alainpereida"
+                target="_blank"
+                class="transition hover:fill-secondary"
+              >
+                <GithubIcon />
+              </a>
+              <a
+                href="https://www.linkedin.com/in/alain-pereida-prado-64b45b1b7"
+                target="_blank"
+                class="transition hover:fill-secondary"
+              >
+                <LinkedinIcon />
+              </a>
+            </div>
           </div>
 
-          <div class="text-center md:text-start">
-            <div class="flex justify-center md:justify-start">
+          <div class="hidden md:block text-center md:text-start">
+            <div class="hidden md:flex md:justify-start">
               <img
                 class="rounded-2xl my-6"
                 src="img/alain.png"
