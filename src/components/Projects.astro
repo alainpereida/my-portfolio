@@ -1,0 +1,29 @@
+---
+import Project from "../components/Project.astro";
+
+---
+
+<div class="grid gap-6 grid-cols-1 md:grid-cols-1">
+  <Project
+    title="Presta"
+    description="Desarrollo y despliegue de un portla web app para el control de préstamos de materíal de laboratorio en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+    href="https://yaqui.mxl.uabc.mx/login"
+    image="img/presta.png"
+    technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
+  />
+
+  <Project
+    title="Sistema de Indicadores Académicos"
+    description="Integración en desarrollo, mantenimiento y despliegue de un sistema de indicadores académicos para el Instituto de Ingeniería en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+    image="img/sistema-de-indicadores-académicos.png"
+    technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
+  />
+
+  <Project
+    title="DigiTabWeb"
+    description="Desarrollo y despliegue de un portal web para la gestión de publicaciones en el Instituto de Ingeniería UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+    image="img/instituto-de-ingeniería.png"
+    href="http://nova.mxl.uabc.mx/view/ii"
+    technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
+  />
+</div>

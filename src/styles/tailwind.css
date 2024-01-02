@@ -1,0 +1,14 @@
+/* The integration's default injected base.css file */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+@layer base {
+  .full-container {
+    @apply bg-gray-900;
+  }
+
+  .full-container:nth-child(2n) {
+    @apply bg-none;
+  }
+}
