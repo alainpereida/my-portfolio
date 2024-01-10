@@ -9,17 +9,16 @@ import Experience from "../components/Experience.astro";
 
 import technologies from "../data/technologies";
 
-import { getI18N } from "@/i18n/"
+import { getI18N } from "@/i18n/";
 
-const { currentLocale } = Astro
-const i18n = getI18N({ currentLocale })
-
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <Layout title="Alain Pereida Prado">
   <!-- <Navbar /> -->
-  <main class="h-screen">
-    <Container class="bg-gray-900 h-full w-full">
+  <main class="h-screen font-sans">
+    <Container class="h-full w-full">
       <div class="h-full container mx-auto md:container px-8 grid items-center">
         <div class="grid grid-cols-1 md:grid-cols-2">
           <div id="home" class="md:mt-14 md:mx-14 text-end">
@@ -90,32 +89,40 @@ const i18n = getI18N({ currentLocale })
         </div>
       </div>
     </Container>
-    <Container class="mx-auto max-w-screen-xl py-12 font-sans">
-      <h2 class="text-6xl font-bold text-center my-8">Proyectos</h2>
-      <Projects />
-    </Container>
-    <Container class="bg-gray-900 w-full inline-block pb-12">
+    <Container class="w-full inline-block pb-12">
       <div
-        class="h-full mx-auto max-w-screen-xl py-12 font-sans md:px-12 md:py-20 lg:px-24 lg:py-0"
+        class="h-full mx-auto max-w-screen-xl px-8 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0"
       >
-        <h2 class="text-6xl font-bold text-center my-8">Experiencia</h2>
+        <h2 class="text-6xl font-bold text-start md:text-center my-8">Últimos trabajos</h2>
+        <Projects />
+      </div>
+    </Container>
+    <Container class="w-full inline-block pb-12">
+      <div
+        class="h-full mx-auto max-w-screen-xl px-8 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0"
+      >
+        <h2 class="text-6xl font-bold text-end md:text-center my-8">Experiencia</h2>
         <Experience />
       </div>
     </Container>
-    <Container class="mx-auto max-w-screen-xl py-12 font-sans">
-      <h2 class="text-6xl font-bold text-center my-8">Skills</h2>
-      <div>
-        <ul class="mt-2 flex flex-wrap" aria-label="Technologies know:">
-          {
-            technologies.map((tech) => (
-              <li class="mr-1.5 mt-2">
-                <div class="flex items-center rounded-full bg-teal-400/10 px-6 py-3 text-2xl font-light leading-5 text-teal-300">
-                  {tech.tech}
-                </div>
-              </li>
-            ))
-          }
-        </ul>
+    <Container class="w-full inline-block pb-12">
+      <div
+        class="h-full mx-auto max-w-screen-xl px-8 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0"
+      >
+        <h2 class="text-6xl font-bold text-start md:text-center my-8">Skills</h2>
+        <div class="mb-16">
+          <ul class="mt-2 flex flex-wrap" aria-label="Technologies know:">
+            {
+              technologies.map((tech) => (
+                <li class="mr-1.5 mt-2">
+                  <div class="flex items-center rounded-full bg-teal-400/10 px-6 py-3 text-2xl font-light leading-5 text-teal-300">
+                    {tech.tech}
+                  </div>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
       </div>
     </Container>
   </main>

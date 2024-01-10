@@ -4,11 +4,4 @@
 @import "tailwindcss/utilities";
 
 @layer base {
-  .full-container {
-    @apply bg-gray-900;
-  }
-
-  .full-container:nth-child(2n) {
-    @apply bg-none;
-  }
 }
