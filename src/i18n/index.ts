@@ -2,7 +2,7 @@ import spanish from './es.json'
 import english from './en.json'
 
 const LANGUAGES = {
-  ENGLISH: 'ca',
+  ENGLISH: 'en',
   SPANISH: 'es'
 }
 
