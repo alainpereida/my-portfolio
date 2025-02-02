@@ -1,15 +1,15 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Projects from "../components/Projects.astro";
-import Navbar from "../components/Navbar.astro";
-import Container from "../components/Container.astro";
-import GithubIcon from "../icons/GithubIcon.astro";
-import LinkedinIcon from "../icons/LinkedinIcon.astro";
-import Experience from "../components/Experience.astro";
+import Layout from "../../layouts/Layout.astro";
+import Projects from "../../components/Projects.astro";
+import Navbar from "../../components/Navbar.astro";
+import Container from "../../components/Container.astro";
+import GithubIcon from "../../icons/GithubIcon.astro";
+import LinkedinIcon from "../../icons/LinkedinIcon.astro";
+import Experience from "../../components/Experience.astro";
 
-import technologies from "../data/technologies";
+import technologies from "../../data/technologies";
 
-import { getI18N } from "@/i18n/";
+import { getI18N } from "../../i18n/";
 
 const { currentLocale } = Astro;
 const i18n = getI18N({ currentLocale });
@@ -37,7 +37,7 @@ const i18n = getI18N({ currentLocale });
               href="/documents/Alain Pereida Prado - CV.pdf"
               target="_blank"
               class="bg-secondary rounded-lg text-black font-bold my-6 py-4 px-8"
-              >{i18n.HEADER_BUTTON_CV}</a
+              >Descarga mi CV</a
             >
             <div
               class="flex fill-white mt-6 gap-5 transition-all justify-end md:hidden"
@@ -96,7 +96,7 @@ const i18n = getI18N({ currentLocale });
         class="h-full mx-auto max-w-screen-xl px-8 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0"
       >
         <h2 class="text-6xl font-bold text-start md:text-center my-8">
-          {i18n.LAST_WORKS_TITLE}
+          Últimos trabajos
         </h2>
         <Projects />
       </div>
