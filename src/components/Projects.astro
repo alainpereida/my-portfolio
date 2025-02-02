@@ -1,12 +1,26 @@
 ---
 import Project from "../components/Project.astro";
-
 ---
 
 <div class="grid gap-6 grid-cols-1 md:grid-cols-1">
   <Project
+    title="Identidad UABC"
+    description="Desarrollo de aplicación mobile para la gestión de identidad de la UABC. El proyecto se desarrolló con flutter. El trabajo fue por contrato de freelance. La empresa solicitante fue e-sol."
+    href="https://identidaduabc.com/"
+    image="img/identidaduabc_icon.png"
+    technologies={["Flutter", "Dart"]}
+  />
+
+  <Project
+    title="Start Market App"
+    description="Desarrollo de aplicación mobile para la gestión de ventas de productos en una tienda de abarrotes. El proyecto se desarrolló con flutter. El trabajo fue por contrato de freelance. La empresa solicitante fue e-sol."
+    image="img/starmarket_icon.png"
+    technologies={["Flutter", "Dart"]}
+  />
+
+  <Project
     title="Presta"
-    description="Desarrollo y despliegue de un portla web app para el control de préstamos de materíal de laboratorio en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
+    description="Desarrollo y despliegue de un portal web app para el control de préstamos de materíal de laboratorio en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
     href="https://yaqui.mxl.uabc.mx/login"
     image="img/presta.png"
     technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
@@ -19,7 +33,7 @@ import Project from "../components/Project.astro";
     href="http://nova.mxl.uabc.mx/view/ii"
     technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
   />
-  
+
   <Project
     title="Sistema de Indicadores Académicos"
     description="Integración en desarrollo, mantenimiento y despliegue de un sistema de indicadores académicos para el Instituto de Ingeniería en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
