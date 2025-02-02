@@ -4,6 +4,9 @@ interface Technologie {
 
 const technologies: Technologie[] = [
   {
+    tech: "Flutter",
+  },
+  {
     tech: "Vue",
   },
   {
@@ -59,6 +62,21 @@ const technologies: Technologie[] = [
   },
   {
     tech: "Azure",
+  },
+  {
+    tech: "Firebase",
+  },
+  {
+    tech: "MongoDB",
+  },
+  {
+    tech: "GraphQL",
+  },
+  {
+    tech: "Apollo",
+  },
+  {
+    tech: "REST API",
   },
 ];
 
