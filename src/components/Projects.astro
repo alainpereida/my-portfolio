@@ -1,43 +1,21 @@
 ---
 import Project from "../components/Project.astro";
+import { getI18N } from "@/i18n/";
+
+const { currentLocale } = Astro;
+const i18n = getI18N({ currentLocale });
 ---
 
 <div class="grid gap-6 grid-cols-1 md:grid-cols-1">
-  <Project
-    title="Identidad UABC"
-    description="Desarrollo de aplicación mobile para la gestión de identidad de la UABC. El proyecto se desarrolló con flutter. El trabajo fue por contrato de freelance. La empresa solicitante fue e-sol."
-    href="https://identidaduabc.com/"
-    image="img/identidaduabc_icon.png"
-    technologies={["Flutter", "Dart"]}
-  />
-
-  <Project
-    title="Start Market App"
-    description="Desarrollo de aplicación mobile para la gestión de ventas de productos en una tienda de abarrotes. El proyecto se desarrolló con flutter. El trabajo fue por contrato de freelance. La empresa solicitante fue e-sol."
-    image="img/starmarket_icon.png"
-    technologies={["Flutter", "Dart"]}
-  />
-
-  <Project
-    title="Presta"
-    description="Desarrollo y despliegue de un portal web app para el control de préstamos de materíal de laboratorio en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
-    href="https://yaqui.mxl.uabc.mx/login"
-    image="img/presta.png"
-    technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
-  />
-
-  <Project
-    title="DigiTabWeb"
-    description="Desarrollo y despliegue de un portal web para la gestión de publicaciones en el Instituto de Ingeniería UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
-    image="img/instituto-de-ingeniería.png"
-    href="http://nova.mxl.uabc.mx/view/ii"
-    technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
-  />
-
-  <Project
-    title="Sistema de Indicadores Académicos"
-    description="Integración en desarrollo, mantenimiento y despliegue de un sistema de indicadores académicos para el Instituto de Ingeniería en la UABC. El proyecto se desarrolló con el framework Vue.js y Express.js, se desplegó en un servidor de la universidad."
-    image="img/sistema-de-indicadores-académicos.png"
-    technologies={["Vue.js", "Express.js", "MySQL", "Vuetify"]}
-  />
+  {
+    i18n.PROJECTS.map((project) => (
+      <Project
+        title={project.title}
+        description={project.description}
+        href={project.href}
+        image={project.image}
+        technologies={project.technologies}
+      />
+    ))
+  }
 </div>

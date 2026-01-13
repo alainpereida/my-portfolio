@@ -1,28 +1,24 @@
 ---
-
+const { currentLocale } = Astro;
+const displayNames = {
+  es: "ES",
+  en: "EN",
+};
 ---
 
-<div class="relative inline-block text-left">
-  <div
-    class="group text-white rounded-md text-xs font-semibold bg-black/30 hover:bg-black/70 transition-all"
-  >
-    <button
-      type="button"
-      class="inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-      aria-expanded="true"
-      aria-haspopup="true"
-    >
-    </button>
-    <ul
-      class="group-hover:block group-hover:animate-fade-down group-hover:animate-duration-200 hidden pt-0.5 absolute w-full"
-    >
-      <li class="py-[2px]">
-        <a
-          class="rounded-md bg-black/30 hover:bg-black/70 whitespace-no-wrap inline-flex justify-start items-center w-full gap-x-2 px-3 py-2"
-        >
-          Español
-        </a>
-      </li>
-    </ul>
-  </div>
+<div class="flex gap-2 font-bold text-sm">
+  {
+    Object.entries(displayNames).map(([locale, label]) => (
+      <a
+        href={locale === "es" ? "/" : `/${locale}`}
+        class={`px-3 py-1 rounded-md transition ${
+          currentLocale === locale
+            ? "bg-secondary text-black"
+            : "text-white hover:text-secondary"
+        }`}
+      >
+        {label}
+      </a>
+    ))
+  }
 </div>
