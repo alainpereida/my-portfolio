@@ -1,12 +1,94 @@
 {
-    "SEO_TITLE": "Premios ESLAND 2024 - Celebrando lo mejor del streaming y los creadores de contenido",
-    "SEO_DESCRIPTION": "Descubre a los mejores creadores de contenido de España, Latinoamérica y Andorra. ¡Vota por tus favoritos! Celebra la innovación y el talento de Twitch, YouTube y más",
-    "HEADER_ME": "I'm",
-    "HEADER_NAME": "Alain Pereida Prado",
-    "HEADER_TITLE": "Web Developer",
-    "HEADER_SUB_TITLE": "+3 years of experience in web development. I'm passionate about creating and developing web applications.",
-    "HEADER_BUTTON_CV": "Descarga mi CV",
-    "LAST_WORKS_TITLE": "Últimos trabajos",
-    "LAST_WORKS_SUB_TITLE": "Estos son algunos de los proyectos en los que he trabajado recientemente"
-  
-  }
+  "SEO_TITLE": "Premios ESLAND 2024 - Celebrando lo mejor del streaming y los creadores de contenido",
+  "SEO_DESCRIPTION": "Descubre a los mejores creadores de contenido de España, Latinoamérica y Andorra. ¡Vota por tus favoritos! Celebra la innovación y el talento de Twitch, YouTube y más",
+  "HEADER_ME": "I'm",
+  "HEADER_NAME": "Alain Pereida Prado",
+  "HEADER_TITLE": "Web Developer",
+  "HEADER_SUB_TITLE": "+3 years of experience in web development. I'm passionate about creating and developing web applications.",
+  "HEADER_BUTTON_CV": "Download my CV",
+  "LAST_WORKS_TITLE": "Latest Works",
+  "LAST_WORKS_SUB_TITLE": "These are some of the projects I've worked on recently",
+  "PROJECTS": [
+    {
+      "title": "Identidad UABC",
+      "description": "Mobile application development for UABC identity management. Developed using Flutter as a freelance project for e-sol.",
+      "href": "https://identidaduabc.com/",
+      "image": "img/identidaduabc_icon.png",
+      "technologies": [
+        "Flutter",
+        "Dart"
+      ]
+    },
+    {
+      "title": "Start Market App",
+      "description": "Mobile application development for sales management in a grocery store. Developed with Flutter as a freelance project for e-sol.",
+      "image": "img/starmarket_icon.png",
+      "technologies": [
+        "Flutter",
+        "Dart"
+      ]
+    },
+    {
+      "title": "Presta",
+      "description": "Development and deployment of a web app portal for laboratory equipment loan control at UABC. Built with Vue.js and Express.js, and deployed on university servers.",
+      "href": "https://yaqui.mxl.uabc.mx/login",
+      "image": "img/presta.png",
+      "technologies": [
+        "Vue.js",
+        "Express.js",
+        "MySQL",
+        "Vuetify"
+      ]
+    },
+    {
+      "title": "DigiTabWeb",
+      "description": "Development and deployment of a web portal for managing publications at the UABC Engineering Institute. Developed with Vue.js and Express.js, and deployed on university servers.",
+      "image": "img/instituto-de-ingeniería.png",
+      "href": "http://nova.mxl.uabc.mx/view/ii",
+      "technologies": [
+        "Vue.js",
+        "Express.js",
+        "MySQL",
+        "Vuetify"
+      ]
+    },
+    {
+      "title": "Academic Indicators System",
+      "description": "Development, maintenance, and deployment of an academic indicator system for the UABC Engineering Institute. Developed with Vue.js and Express.js, and deployed on university servers.",
+      "image": "img/sistema-de-indicadores-académicos.png",
+      "technologies": [
+        "Vue.js",
+        "Express.js",
+        "MySQL",
+        "Vuetify"
+      ]
+    }
+  ],
+  "EXPERIENCE_TITLE": "Experience",
+  "EXPERIENCE": [
+    {
+      "date": "February 2024 - Present",
+      "position": ".NET Developer",
+      "company": "Reliant Parking",
+      "description": "Involved in the development and maintenance of web and mobile applications. Utilizing solutions with .NET, .NET Core, C#, SQL Server, AWS, Vue.js, and more. Implementation of RESTful services. Worked under Scrum methodology. Integrated PDF generation systems."
+    },
+    {
+      "date": "September 2022 - February 2024 / Freelancer",
+      "position": "Web Developer",
+      "company": "Pixzelle Studio",
+      "description": "Participated in software development using both monolithic and microservices architectures. Delivered RESTful API developments for over 100,000 users. Configured server resource optimization. Used Scrum methodology."
+    },
+    {
+      "date": "October 2022 - August 2021",
+      "position": "Software Developer",
+      "company": "Inercy",
+      "description": "Participated in the development and production launch of an autonomous drone monitoring system. Worked on an Android mobile app and a web system built with ASP.NET Core. Performed application deployments and staff training."
+    },
+    {
+      "date": "January 2022 - March 2021",
+      "position": "Intern",
+      "company": "Honeywell",
+      "description": "Creation of high-performance reports based on company metrics. Responsible for identifying improvements in reporting and proposing ideas for new data visualizations."
+    }
+  ]
+}
