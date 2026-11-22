@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T00:00:00Z",
+  "title": "Design System: Alain Pereida Prado",
+  "extensions": {
+    "colorMeta": {
+      "signal": { "role": "primary", "displayName": "Signal Green", "canonical": "rgb(0 219 130)", "tonalRamp": ["#003d24", "#005434", "#007444", "#009a5b", "#00db82", "#2bfda7", "#8cfecb", "#d6ffec"] },
+      "signal-ink": { "role": "primary", "displayName": "Trace Ink Green (light)", "canonical": "rgb(0 116 68)", "tonalRamp": ["#002414", "#003d24", "#005434", "#007444", "#009a5b", "#00db82", "#8cfecb", "#d6ffec"] },
+      "signal-ink-dark": { "role": "primary", "displayName": "Trace Ink Green (dark)", "canonical": "rgb(43 253 167)", "tonalRamp": ["#003d24", "#007444", "#00db82", "#2bfda7", "#5cfeb9", "#8cfecb", "#b8fedd", "#e6fff3"] },
+      "on-signal": { "role": "primary", "displayName": "Signal Ground", "canonical": "rgb(4 20 12)", "tonalRamp": ["#04140c", "#0c2418", "#163626", "#224a36", "#346450", "#52846c", "#86ad99", "#c6dccf"] },
+      "paper": { "role": "neutral", "displayName": "Datasheet Paper (light)", "canonical": "rgb(238 240 236)", "tonalRamp": ["#0c120f", "#1f2723", "#343d38", "#4a544f", "#6f7a74", "#96a69e", "#c9d1cc", "#eef0ec"] },
+      "sheet": { "role": "neutral", "displayName": "Drawing Sheet (light)", "canonical": "rgb(248 249 246)", "tonalRamp": ["#0c120f", "#1f2723", "#343d38", "#4a544f", "#6f7a74", "#96a69e", "#d6dcd8", "#f8f9f6"] },
+      "ink": { "role": "neutral", "displayName": "Print Ink (light)", "canonical": "rgb(12 18 15)", "tonalRamp": ["#0c120f", "#1f2723", "#343d38", "#4a544f", "#6f7a74", "#96a69e", "#c9d1cc", "#eef0ec"] },
+      "muted": { "role": "neutral", "displayName": "Annotation Grey (light)", "canonical": "rgb(74 84 79)", "tonalRamp": ["#0c120f", "#1f2723", "#343d38", "#4a544f", "#6f7a74", "#96a69e", "#c9d1cc", "#eef0ec"] },
+      "paper-dark": { "role": "neutral", "displayName": "Blueprint Paper (dark)", "canonical": "rgb(8 15 12)", "tonalRamp": ["#080f0c", "#0d1612", "#17221d", "#25322c", "#3c4b44", "#5f6f67", "#96a69e", "#e2e9e4"] },
+      "sheet-dark": { "role": "neutral", "displayName": "Blueprint Sheet (dark)", "canonical": "rgb(13 22 18)", "tonalRamp": ["#080f0c", "#0d1612", "#17221d", "#25322c", "#3c4b44", "#5f6f67", "#96a69e", "#e2e9e4"] },
+      "ink-dark": { "role": "neutral", "displayName": "Lightbox Ink (dark)", "canonical": "rgb(226 233 228)", "tonalRamp": ["#080f0c", "#17221d", "#25322c", "#3c4b44", "#5f6f67", "#96a69e", "#c2cdc6", "#e2e9e4"] },
+      "muted-dark": { "role": "neutral", "displayName": "Annotation Grey (dark)", "canonical": "rgb(150 166 158)", "tonalRamp": ["#080f0c", "#17221d", "#25322c", "#3c4b44", "#5f6f67", "#96a69e", "#c2cdc6", "#e2e9e4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The part name in the hero only; balanced wrap." },
+      "headline": { "displayName": "Headline", "purpose": "Section titles; sticky in the 4-column title rail on desktop." },
+      "title": { "displayName": "Title", "purpose": "Project names and the contact lead." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs, capped near 38 to 40rem; light weight is the default for everything." },
+      "label": { "displayName": "Label", "purpose": "Captions, sheet header and footer, dates, nav, table keys." }
+    },
+    "shadows": [
+      { "name": "drawing-lift", "value": "0 12px 28px -16px rgb(0 0 0 / 0.55)", "purpose": "Project screenshots placed on a drafting-grid figure." },
+      { "name": "part-lift", "value": "0 10px 24px -14px rgb(0 0 0 / 0.6)", "purpose": "The IC body in the pin configuration diagram." },
+      { "name": "signal-glow", "value": "0 6px 18px -8px rgb(var(--signal) / 0.8)", "purpose": "Primary button hover only." }
+    ],
+    "motion": [
+      { "name": "ease-draw", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Drawn lines: active-nav underline (300ms) and revision trace segments (700ms)." },
+      { "name": "trace-stagger", "value": "450ms", "purpose": "Delay per revision-trace segment so the trace draws top to bottom." },
+      { "name": "duration-state", "value": "200ms", "purpose": "Button, link and bus-list color transitions." },
+      { "name": "duration-pin", "value": "250ms ease", "purpose": "Pin lighting and dimming in the stack diagram." },
+      { "name": "duration-lift", "value": "500ms", "purpose": "Project screenshot lifts 4px on row hover; removed under reduced motion." }
+    ],
+    "breakpoints": [
+      { "name": "xs-max", "value": "480px" },
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one action per region (CV download, freelance inquiry). Square, signal fill, leading stroke icon.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"square\"><path d=\"M12 4v11\"/><path d=\"m7 10 5 5 5-5\"/><path d=\"M4 20h16\"/></svg>Descargar CV</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; background: rgb(var(--signal, 0 219 130)); color: rgb(var(--on-signal, 4 20 12)); font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; font-weight: 700; text-decoration: none; border-radius: 0; transition: background-color 200ms, box-shadow 200ms, transform 200ms; } .ds-btn-primary:hover { background: rgb(var(--signal-hover, 0 194 115)); box-shadow: 0 6px 18px -8px rgb(var(--signal, 0 219 130) / 0.8); } .ds-btn-primary:active { transform: translateY(1px); } .ds-btn-primary:focus-visible { outline: 2px solid rgb(var(--signal, 0 219 130)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Outlined companion action; inverts to ink on hover.",
+      "html": "<a class=\"ds-btn-secondary\" href=\"#\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"square\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"14\"/><path d=\"m3 6 9 7 9-7\"/></svg>Escríbeme</a>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 24px; background: transparent; color: rgb(var(--ink, 12 18 15)); border: 1px solid rgb(var(--rule, 12 18 15) / 0.9); font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; font-weight: 700; text-decoration: none; border-radius: 0; transition: background-color 200ms, color 200ms; } .ds-btn-secondary:hover { background: rgb(var(--ink, 12 18 15)); color: rgb(var(--paper, 238 240 236)); } .ds-btn-secondary:focus-visible { outline: 2px solid rgb(var(--signal, 0 219 130)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Sheet Navigation",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Sticky datasheet header: part-number tag, section links with a drawn green underline on the active one.",
+      "html": "<header class=\"ds-nav\"><a class=\"ds-nav-brand\" href=\"#\"><span class=\"ds-tag-part\">APP-2021</span><b>Alain Pereida Prado</b></a><nav class=\"ds-nav-links\"><a href=\"#\">Acerca</a><a href=\"#\" aria-current=\"true\">Servicios</a><a href=\"#\">Stack</a><a href=\"#\">Proyectos</a></nav></header>",
+      "css": ".ds-nav { display: flex; align-items: stretch; height: 56px; padding: 0 24px; background: rgb(var(--paper, 238 240 236) / 0.9); backdrop-filter: blur(12px); border-bottom: 1px solid rgb(var(--rule, 12 18 15) / 0.9); font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; font-weight: 300; color: rgb(var(--ink, 12 18 15)); } .ds-nav-brand { display: flex; align-items: center; gap: 12px; padding-right: 24px; border-right: 1px solid rgb(var(--rule, 12 18 15) / 0.18); color: inherit; text-decoration: none; } .ds-tag-part { background: rgb(var(--ink, 12 18 15)); color: rgb(var(--paper, 238 240 236)); padding: 2px 6px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; } .ds-nav-links { display: flex; align-items: stretch; } .ds-nav-links a { position: relative; display: flex; align-items: center; padding: 0 14px; font-size: 0.95rem; color: rgb(var(--muted, 74 84 79)); text-decoration: none; transition: color 200ms; } .ds-nav-links a:hover { color: rgb(var(--ink, 12 18 15)); } .ds-nav-links a::after { content: ''; position: absolute; left: 12px; right: 12px; bottom: -1px; height: 3px; background: rgb(var(--signal, 0 219 130)); transform: scaleX(0); transform-origin: left; transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-nav-links a[aria-current='true'] { color: rgb(var(--ink, 12 18 15)); font-weight: 700; } .ds-nav-links a[aria-current='true']::after { transform: scaleX(1); } .ds-nav-links a:focus-visible { outline: 2px solid rgb(var(--signal, 0 219 130)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Spec Table",
+      "kind": "card",
+      "description": "Key/value specification rows: strong top rule, hairline rows, grey light keys, bold values.",
+      "html": "<table class=\"ds-spec\"><tbody><tr><th>Experiencia</th><td>+5 años</td></tr><tr><th>Puesto actual</th><td>.NET Developer · Reliant Parking</td></tr><tr><th>Idiomas</th><td>Español · English</td></tr></tbody></table>",
+      "css": ".ds-spec { width: 100%; max-width: 38rem; border-collapse: collapse; border-top: 1px solid rgb(var(--rule, 12 18 15) / 0.9); font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; font-variant-numeric: tabular-nums; color: rgb(var(--ink, 12 18 15)); text-align: left; } .ds-spec tr { border-bottom: 1px solid rgb(var(--rule, 12 18 15) / 0.18); } .ds-spec th { width: 38%; padding: 10px 16px 10px 0; font-weight: 300; color: rgb(var(--muted, 74 84 79)); vertical-align: top; } .ds-spec td { padding: 10px 0; font-weight: 700; }"
+    },
+    {
+      "name": "Inline Link",
+      "kind": "custom",
+      "description": "Ink link whose underline and color resolve to Trace Ink Green on hover.",
+      "html": "<a class=\"ds-link\" href=\"#\">LinkedIn <svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.75\" stroke-linecap=\"square\"><path d=\"M7 17 17 7\"/><path d=\"M8 7h9v9\"/></svg></a>",
+      "css": ".ds-link { display: inline-flex; align-items: center; gap: 8px; font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; font-weight: 300; color: rgb(var(--ink, 12 18 15)); text-decoration: underline; text-decoration-color: transparent; text-decoration-thickness: 1px; text-underline-offset: 0.2em; transition: color 200ms, text-decoration-color 200ms; } .ds-link:hover { color: rgb(var(--signal-ink, 0 116 68)); text-decoration-color: currentColor; } .ds-link:focus-visible { outline: 2px solid rgb(var(--signal, 0 219 130)); outline-offset: 3px; }"
+    },
+    {
+      "name": "Status Tag",
+      "kind": "chip",
+      "refersTo": "status-tag",
+      "description": "Square signal tag marking the current revision; the only filled tag besides the part number.",
+      "html": "<span class=\"ds-rev\"><b>Rev 5.0</b><span class=\"ds-tag-status\">Actual</span></span>",
+      "css": ".ds-rev { font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; font-size: 0.875rem; color: rgb(var(--ink, 12 18 15)); } .ds-tag-status { margin-left: 8px; padding: 2px 6px; background: rgb(var(--signal, 0 219 130)); color: rgb(var(--on-signal, 4 20 12)); font-size: 0.75rem; font-weight: 700; border-radius: 0; }"
+    },
+    {
+      "name": "Drafting Figure",
+      "kind": "custom",
+      "description": "Drawing ground for screenshots and diagrams: sheet color, 48/12px engineering grid, hairline border, Fig. caption.",
+      "html": "<figure class=\"ds-figure\"><div class=\"ds-grid\"><div class=\"ds-shot\"></div></div><figcaption>Fig. 2 — Identidad UABC</figcaption></figure>",
+      "css": ".ds-figure { margin: 0; font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; } .ds-grid { display: flex; align-items: center; justify-content: center; aspect-ratio: 16 / 10; padding: 24px; border: 1px solid rgb(var(--rule, 12 18 15) / 0.18); background-color: rgb(var(--sheet, 248 249 246)); background-image: linear-gradient(rgb(var(--grid, 12 18 15) / 0.07) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--grid, 12 18 15) / 0.07) 1px, transparent 1px), linear-gradient(rgb(var(--grid, 12 18 15) / 0.035) 1px, transparent 1px), linear-gradient(90deg, rgb(var(--grid, 12 18 15) / 0.035) 1px, transparent 1px); background-size: 48px 48px, 48px 48px, 12px 12px, 12px 12px; background-position: -1px -1px; } .ds-shot { width: 100%; height: 100%; background: rgb(var(--paper, 238 240 236)); border: 1px solid rgb(var(--rule, 12 18 15) / 0.9); box-shadow: 0 12px 28px -16px rgb(0 0 0 / 0.55); transition: transform 500ms; } .ds-figure:hover .ds-shot { transform: translateY(-4px); } .ds-figure figcaption { margin-top: 8px; font-size: 0.875rem; font-weight: 300; color: rgb(var(--muted, 74 84 79)); }"
+    },
+    {
+      "name": "Revision Trace",
+      "kind": "custom",
+      "description": "Signature: experience as a revision history on one continuous green trace with ring nodes; the current node is filled.",
+      "html": "<ol class=\"ds-trace\"><li><span class=\"ds-seg\"></span><span class=\"ds-node ds-node-on\"></span><b>Rev 4.0</b><h3>.NET Developer · Reliant Parking</h3></li><li><span class=\"ds-seg\"></span><span class=\"ds-node\"></span><b>Rev 3.0</b><h3>Pixzelle Studio</h3></li><li><span class=\"ds-node\"></span><b>Rev 2.0</b><h3>Inercy</h3></li></ol>",
+      "css": ".ds-trace { list-style: none; margin: 0; padding: 0; font-family: Grotesk, 'Helvetica Neue', Arial, sans-serif; color: rgb(var(--ink, 12 18 15)); } .ds-trace li { position: relative; padding: 0 0 32px 40px; font-size: 0.875rem; } .ds-trace li:last-child { padding-bottom: 0; } .ds-trace h3 { margin: 4px 0 0; font-size: 1.25rem; font-weight: 700; } .ds-seg { position: absolute; left: 7px; top: 0.5rem; bottom: -0.5rem; width: 3px; background: rgb(var(--signal, 0 219 130)); transform-origin: top; transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-trace:hover .ds-seg { transform: scaleY(1); } .ds-node { position: absolute; left: 0; top: 0.2rem; width: 17px; height: 17px; box-sizing: border-box; border-radius: 999px; border: 3px solid rgb(var(--signal, 0 219 130)); background: rgb(var(--paper, 238 240 236)); z-index: 1; } .ds-node-on { background: rgb(var(--signal, 0 219 130)); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Component Datasheet",
+    "overview": "The person is documented the way an electronic part is documented: a part number, a revision, spec tables, a package drawing, a pin configuration, a revision history and ordering information. Every surface reads as a printed technical sheet. In light mode it is cool off-white paper with black ink; in dark mode the same sheet sits under a lightbox as a deep green-black blueprint. Nothing is decorative unless a datasheet would carry it: rules, ticks, dimension lines, figure captions, an engineering grid behind drawings.\n\nDensity is that of a reference document, not a marketing page. Content lives in tables and ruled lists separated by 1px hairlines; heavier rules close sections. A single signal green does the work a highlighter does on a printout: it marks traces, pins, the active state and the one primary action, and it is never a background wash. Type is one grotesque in two weights, with tabular numerals throughout, so the page has the evenness of a typeset spec.\n\nThe confirmed rejection is the stock developer portfolio: split hero with floating card grid, rounded cards, and pill clouds of technologies.",
+    "keyCharacteristics": [
+      "Printed-sheet frame: header strip with part number and revision, footer with \"sheet\" pagination.",
+      "Akzidenz-Grotesk only, weights 300 and 700, tabular numerals.",
+      "Hairline (18% ink) and strong (90% ink) 1px rules carry all structure.",
+      "One signal green for traces, pins, markers, active states and the primary action.",
+      "Square corners everywhere; circles only where a drawn part is circular.",
+      "Drafting grid (48px major, 12px minor) behind every figure."
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Green is the only hue. It marks something live (a trace, a pin, an active state, the action to take) and never fills a section, card or large background.", "section": "colors" },
+      { "name": "The Legible Green Rule", "body": "Signal Green (#00db82) is never used as text or thin line-art on light paper; anything that must be read uses Trace Ink Green.", "section": "colors" },
+      { "name": "The Two Weights Rule", "body": "Only 300 and 700 exist. Light is the default for everything; bold names things (part name, titles, spec values, active nav, buttons).", "section": "typography" },
+      { "name": "The Tight Display Rule", "body": "Tracking tightens as size grows: -0.035em at display, -0.03em at headline, -0.02em at title, none at body.", "section": "typography" },
+      { "name": "The Ruled Row Rule", "body": "Lists and tables open on a strong rule and separate rows with hairlines. A new grouping is a new rule, not a new card.", "section": "layout" },
+      { "name": "The Paper-Flat Rule", "body": "Containers, sections, tables and buttons at rest carry no shadow. A shadow means \"an object placed on the drawing\", never \"a card\".", "section": "elevation" },
+      { "name": "The Square Corner Rule", "body": "No radius on any UI surface. A circle is allowed only when it depicts a circular part on a drawing.", "section": "shapes" }
+    ],
+    "dos": [
+      "**Do** build every new grouping as a ruled list or spec table: strong rule on top, hairline between rows.",
+      "**Do** use Signal Green (#00db82) only for something live: a trace, pin, marker, active state or the single primary action.",
+      "**Do** set any green text or thin green line on light paper in Trace Ink Green (#007444).",
+      "**Do** keep type to Grotesk at 300 and 700 with tabular numerals, tightening tracking as size grows.",
+      "**Do** put screenshots and drawings on a drafting-grid figure with a \"Fig. N\" caption.",
+      "**Do** keep the 76rem sheet column and the 4/8 sticky-title split for standard sections.",
+      "**Do** honor reduced motion: the trace is drawn, hover lifts are removed."
+    ],
+    "donts": [
+      "**Don't** use rounded cards or pill chips; corners are 0px and technologies are listed as text or pins.",
+      "**Don't** introduce a second accent hue or a green background wash.",
+      "**Don't** add shadows to containers, sections or buttons at rest.",
+      "**Don't** add a third font weight or a second family.",
+      "**Don't** place small uppercase eyebrow labels above section titles; the headline stands alone with its intro."
+    ]
+  }
+}

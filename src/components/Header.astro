@@ -1,0 +1,202 @@
+---
+import { getI18N } from "@/i18n/";
+import Icon from "@/icons/Icon.astro";
+import { PART_NUMBER } from "@/data/stack";
+
+const { currentLocale = "es" } = Astro;
+const i18n = getI18N({ currentLocale });
+const nav = i18n.NAV;
+const links = [
+  ["about", nav.about],
+  ["services", nav.services],
+  ["stack", nav.stack],
+  ["projects", nav.projects],
+  ["experience", nav.experience],
+  ["contact", nav.contact],
+] as const;
+const locales = [
+  ["es", "ES", "/"],
+  ["en", "EN", "/en/"],
+] as const;
+---
+
+<a
+  href="#main"
+  class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:bg-signal focus:px-4 focus:py-2 focus:font-bold focus:text-on-signal"
+  >{i18n.SKIP}</a
+>
+
+<header class="sticky top-0 z-50 border-b rule-strong bg-paper/90 backdrop-blur-md">
+  <div class="mx-auto flex h-14 max-w-sheet items-stretch px-4 sm:px-6">
+    <a href="#top" class="flex items-center gap-3 pr-4 hairline sm:border-r sm:pr-6">
+      <span class="bg-ink px-1.5 py-0.5 text-[0.7rem] font-bold tracking-wider text-paper">{PART_NUMBER}</span>
+      <span class="hidden font-bold sm:inline">Alain Pereida Prado</span>
+    </a>
+
+    <nav aria-label={i18n.NAV_ARIA.main} class="hidden flex-1 items-stretch lg:flex">
+      <ul class="flex items-stretch">
+        {
+          links.map(([id, label]) => (
+            <li class="flex">
+              <a
+                href={`#${id}`}
+                data-nav={id}
+                class="nav-link relative flex items-center px-3.5 text-[0.95rem] text-muted transition-colors hover:text-ink"
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="ml-auto flex items-stretch">
+      <div class="flex items-center gap-1 px-3 border-l hairline" role="group" aria-label={i18n.LANG_LABEL}>
+        {
+          locales.map(([locale, label, href]) => (
+            <a
+              href={href}
+              hreflang={locale}
+              lang={locale}
+              aria-current={currentLocale === locale ? "page" : undefined}
+              class={`px-2 py-1 text-sm font-bold transition-colors ${
+                currentLocale === locale ? "bg-ink text-paper" : "text-muted hover:text-ink"
+              }`}
+            >
+              {label}
+            </a>
+          ))
+        }
+      </div>
+      <button
+        type="button"
+        id="theme-toggle"
+        class="flex w-12 items-center justify-center border-l hairline text-ink transition-colors hover:bg-ink hover:text-paper"
+        data-label-light={i18n.THEME.toLight}
+        data-label-dark={i18n.THEME.toDark}
+        aria-label={i18n.THEME.toDark}
+      >
+        <span class="theme-icon-sun"><Icon name="sun" /></span>
+        <span class="theme-icon-moon"><Icon name="moon" /></span>
+      </button>
+    </div>
+  </div>
+
+  <nav aria-label={i18n.NAV_ARIA.sections} class="border-t hairline lg:hidden">
+    <ul class="mobile-rail mx-auto flex max-w-sheet gap-1 overflow-x-auto px-2 [scrollbar-width:none]">
+      {
+        links.map(([id, label]) => (
+          <li class="shrink-0">
+            <a
+              href={`#${id}`}
+              data-nav={id}
+              class="nav-link relative block px-3 py-2.5 text-sm text-muted transition-colors hover:text-ink"
+            >
+              {label}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</header>
+
+<style>
+  /* Fade the edge that still has links beyond it, so overflow is visible. */
+  .mobile-rail {
+    --fade-l: 0px;
+    --fade-r: 2.5rem;
+    mask-image: linear-gradient(90deg, transparent, #000 var(--fade-l), #000 calc(100% - var(--fade-r)), transparent);
+  }
+  .mobile-rail[data-at-end] {
+    --fade-r: 0px;
+  }
+  .mobile-rail[data-scrolled] {
+    --fade-l: 2.5rem;
+  }
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0.75rem;
+    right: 0.75rem;
+    bottom: -1px;
+    height: 3px;
+    background: rgb(var(--signal));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .nav-link[aria-current="true"] {
+    color: rgb(var(--ink));
+    font-weight: 700;
+  }
+  .nav-link[aria-current="true"]::after {
+    transform: scaleX(1);
+  }
+  :global(html[data-theme="dark"]) .theme-icon-moon,
+  :global(html:not([data-theme="dark"])) .theme-icon-sun {
+    display: none;
+  }
+</style>
+
+<script>
+  const root = document.documentElement;
+  const toggle = document.getElementById("theme-toggle");
+
+  const syncLabel = () => {
+    if (!toggle) return;
+    const dark = root.dataset.theme === "dark";
+    toggle.setAttribute("aria-label", (dark ? toggle.dataset.labelLight : toggle.dataset.labelDark) ?? "");
+    toggle.setAttribute("title", toggle.getAttribute("aria-label") ?? "");
+  };
+  syncLabel();
+
+  toggle?.addEventListener("click", () => {
+    const next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try {
+      localStorage.setItem("theme", next);
+    } catch {}
+    syncLabel();
+  });
+
+  const rail = document.querySelector<HTMLElement>(".mobile-rail");
+  const syncRail = () => {
+    if (!rail) return;
+    rail.toggleAttribute("data-scrolled", rail.scrollLeft > 4);
+    rail.toggleAttribute("data-at-end", rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 4);
+  };
+  rail?.addEventListener("scroll", syncRail, { passive: true });
+  window.addEventListener("resize", syncRail);
+  syncRail();
+
+  // Mark the section in view in both navs.
+  const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("[data-nav]"));
+  const sections = Array.from(new Set(links.map((l) => l.dataset.nav)))
+    .map((id) => document.getElementById(id ?? ""))
+    .filter((s): s is HTMLElement => Boolean(s));
+
+  const setActive = (id: string | null) => {
+    for (const link of links) {
+      if (link.dataset.nav === id) {
+        link.setAttribute("aria-current", "true");
+        // Keep the active item visible in the horizontally scrolling mobile nav.
+        const rail = link.closest("ul");
+        if (rail && rail.scrollWidth > rail.clientWidth) {
+          rail.scrollTo({ left: link.offsetLeft - rail.clientWidth / 2 + link.offsetWidth / 2, behavior: "smooth" });
+        }
+      } else link.removeAttribute("aria-current");
+    }
+  };
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries.filter((e) => e.isIntersecting);
+      if (visible.length) setActive(visible[visible.length - 1].target.id);
+      else if (window.scrollY < 200) setActive(null);
+    },
+    { rootMargin: "-45% 0px -50% 0px" }
+  );
+  sections.forEach((s) => observer.observe(s));
+</script>

@@ -1,0 +1,28 @@
+---
+import { getI18N } from "@/i18n/";
+import SheetSection from "./SheetSection.astro";
+
+const { currentLocale = "es" } = Astro;
+const a = getI18N({ currentLocale }).ABOUT;
+---
+
+<SheetSection id="about" title={a.title}>
+  <div class="grid gap-10 md:grid-cols-2 md:gap-12">
+    <div class="space-y-5 text-lg leading-relaxed" style="text-wrap: pretty;">
+      {a.paragraphs.map((p) => <p>{p}</p>)}
+    </div>
+    <div>
+      <h3 class="border-b rule-strong pb-2 font-bold">{a.featuresTitle}</h3>
+      <ul>
+        {
+          a.features.map((f) => (
+            <li class="flex gap-3 border-b hairline py-3">
+              <span class="mt-[0.45em] h-2 w-2 shrink-0 bg-signal" aria-hidden="true" />
+              <span>{f}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</SheetSection>

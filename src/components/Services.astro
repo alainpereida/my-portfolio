@@ -1,0 +1,45 @@
+---
+import { getI18N } from "@/i18n/";
+import Icon from "@/icons/Icon.astro";
+import SheetSection from "./SheetSection.astro";
+
+const { currentLocale = "es" } = Astro;
+const i18n = getI18N({ currentLocale });
+const s = i18n.SERVICES;
+const mailto = `mailto:${i18n.CONTACT.email}?subject=${encodeURIComponent(s.mailSubject)}`;
+---
+
+<SheetSection id="services" title={s.title} intro={s.intro}>
+  <div class="hidden grid-cols-12 gap-6 border-b rule-strong pb-2 text-sm font-bold md:grid" aria-hidden="true">
+    <span class="col-span-3">{s.headers.service}</span>
+    <span class="col-span-5">{s.headers.description}</span>
+    <span class="col-span-4">{s.headers.stack}</span>
+  </div>
+  <dl class="border-t rule-strong md:border-t-0">
+    {
+      s.items.map((item) => (
+        <div class="service-row group grid gap-1.5 border-b hairline py-5 md:grid-cols-12 md:gap-6">
+          <dt class="text-xl font-bold md:col-span-3 md:text-lg">
+            <span class="service-mark mr-2 inline-block h-2.5 w-2.5 bg-ink align-[0.08em] transition-colors" aria-hidden="true" />
+            {item.name}
+          </dt>
+          <dd class="leading-relaxed md:col-span-5">{item.description}</dd>
+          <dd class="text-sm leading-relaxed text-muted md:col-span-4 md:text-[0.95rem]">
+            <span class="sr-only">{s.headers.stack}: </span>
+            {item.stack}
+          </dd>
+        </div>
+      ))
+    }
+  </dl>
+  <a href={mailto} class="btn-primary mt-8">
+    <Icon name="mail" />
+    {s.cta}
+  </a>
+</SheetSection>
+
+<style>
+  .service-row:hover .service-mark {
+    background: rgb(var(--signal));
+  }
+</style>

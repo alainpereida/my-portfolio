@@ -1,7 +1,158 @@
-/* The integration's default injected base.css file */
 @import "tailwindcss/base";
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@font-face {
+  font-family: "Grotesk";
+  src: url("/fonts/akzidenz-grotesk-light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Grotesk";
+  src: url("/fonts/akzidenz-grotesk-bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 @layer base {
+  /* Light: printed datasheet paper. */
+  :root {
+    --paper: 238 240 236;
+    --sheet: 248 249 246;
+    --ink: 12 18 15;
+    --muted: 74 84 79;
+    --rule: 12 18 15;
+    --grid: 12 18 15;
+    --signal: 0 219 130;
+    --signal-ink: 0 116 68;
+    --signal-hover: 0 194 115;
+    --on-signal: 4 20 12;
+    color-scheme: light;
+  }
+
+  /* Dark: the same sheet as a blueprint under a lightbox. */
+  :root[data-theme="dark"] {
+    --paper: 8 15 12;
+    --sheet: 13 22 18;
+    --ink: 226 233 228;
+    --muted: 150 166 158;
+    --rule: 226 233 228;
+    --grid: 0 219 130;
+    --signal: 0 219 130;
+    --signal-ink: 43 253 167;
+    --signal-hover: 43 253 167;
+    --on-signal: 4 20 12;
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-weight: 300;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    font-variant-numeric: tabular-nums;
+    text-rendering: optimizeLegibility;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-paper;
+  }
+
+  strong,
+  b {
+    font-weight: 700;
+  }
+
+  ::selection {
+    background: rgb(var(--signal));
+    color: rgb(var(--on-signal));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 3px;
+  }
+
+  a {
+    text-underline-offset: 0.2em;
+    text-decoration-thickness: 1px;
+  }
+
+  html {
+    scrollbar-color: rgb(var(--muted) / 0.6) rgb(var(--paper));
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: rgb(var(--paper));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--muted) / 0.5);
+    border: 2px solid rgb(var(--paper));
+  }
+}
+
+@layer components {
+  /* Fine engineering grid used behind drawings and figures. */
+  .drafting-grid {
+    background-color: rgb(var(--sheet));
+    background-image:
+      linear-gradient(rgb(var(--grid) / 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--grid) / 0.07) 1px, transparent 1px),
+      linear-gradient(rgb(var(--grid) / 0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--grid) / 0.035) 1px, transparent 1px);
+    background-size:
+      48px 48px,
+      48px 48px,
+      12px 12px,
+      12px 12px;
+    background-position: -1px -1px;
+  }
+
+  .hairline {
+    border-color: rgb(var(--rule) / 0.18);
+  }
+
+  .rule-strong {
+    border-color: rgb(var(--rule) / 0.9);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2.5 bg-signal px-6 py-3.5 font-bold text-on-signal transition-[background-color,box-shadow,transform] duration-200;
+  }
+  .btn-primary:hover {
+    background-color: rgb(var(--signal-hover));
+    box-shadow: 0 6px 18px -8px rgb(var(--signal) / 0.8);
+  }
+  .btn-primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2.5 border px-6 py-3.5 font-bold transition-colors duration-200;
+    border-color: rgb(var(--rule) / 0.9);
+  }
+  .btn-secondary:hover {
+    @apply bg-ink text-paper;
+  }
+
+  .link-ink {
+    @apply underline decoration-transparent transition-colors duration-200;
+  }
+  .link-ink:hover {
+    color: rgb(var(--signal-ink));
+    text-decoration-color: currentColor;
+  }
 }

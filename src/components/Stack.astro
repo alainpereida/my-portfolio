@@ -1,0 +1,240 @@
+---
+import { getI18N } from "@/i18n/";
+import SheetSection from "./SheetSection.astro";
+import { leftPins, rightPins, groupOrder, pinRange, PART_NUMBER } from "@/data/stack";
+
+const { currentLocale = "es" } = Astro;
+const st = getI18N({ currentLocale }).STACK;
+const rows = Math.max(leftPins.length, rightPins.length);
+---
+
+<SheetSection id="stack" title={st.title} intro={st.intro}>
+  <div class="stack-board grid gap-10 xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-10" data-active="">
+    <figure class="drafting-grid border hairline px-2 py-8 sm:px-6">
+      <div class="chip mx-auto grid max-w-[34rem] grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)]" style={`--rows:${rows}`}>
+        <ul class="pins pins-left">
+          {
+            leftPins.map((p) => (
+              <li class="pin" data-group={p.group}>
+                <span class="pin-label">{p.tech}</span>
+                <span class="pin-num">{p.number}</span>
+                <span class="pin-leg" aria-hidden="true" />
+              </li>
+            ))
+          }
+        </ul>
+        <div class="chip-body" aria-hidden="true">
+          <span class="chip-notch"></span>
+          <span class="chip-dot"></span>
+          <span class="chip-text">{PART_NUMBER} · ALAIN PEREIDA</span>
+        </div>
+        <ul class="pins pins-right">
+          {
+            rightPins.map((p) => (
+              <li class="pin" data-group={p.group}>
+                <span class="pin-leg" aria-hidden="true" />
+                <span class="pin-num">{p.number}</span>
+                <span class="pin-label">{p.tech}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </figure>
+
+    <div>
+      <h3 class="border-b rule-strong pb-2 font-bold">{st.groupsLabel}</h3>
+      <ul>
+        {
+          groupOrder.map((g) => {
+            const r = pinRange(g);
+            return (
+              <li class="border-b hairline">
+                <button type="button" class="group-btn flex w-full items-baseline gap-3 py-3 text-left" data-group={g} aria-pressed="false">
+                  <span class="group-swatch h-2.5 w-2.5 shrink-0 border rule-strong" aria-hidden="true" />
+                  <span class="flex-1 font-bold">{st.groups[g]}</span>
+                  <span class="text-sm text-muted">
+                    {r.count} {st.pins.toLowerCase()}
+                  </span>
+                </button>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </div>
+  </div>
+</SheetSection>
+
+<style>
+  .chip {
+    --pin-h: 1.9rem;
+    font-size: 0.9rem;
+  }
+  .pins {
+    display: grid;
+    grid-template-rows: repeat(var(--rows), var(--pin-h));
+    padding-block: 1.25rem;
+  }
+  .pin {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-width: 0;
+    transition: color 250ms ease, opacity 250ms ease;
+  }
+  .pins-left .pin {
+    justify-content: flex-end;
+  }
+  .pin-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .pin-num {
+    width: 1.5rem;
+    flex-shrink: 0;
+    font-size: 0.7rem;
+    color: rgb(var(--muted));
+    text-align: center;
+  }
+  .pin-leg {
+    width: 1.75rem;
+    height: 0.55rem;
+    flex-shrink: 0;
+    background: rgb(var(--sheet));
+    border: 1.5px solid rgb(var(--rule) / 0.75);
+    transition: background-color 250ms ease, border-color 250ms ease;
+  }
+  .pins-left .pin-leg {
+    border-right: 0;
+  }
+  .pins-right .pin-leg {
+    border-left: 0;
+  }
+
+  .chip-body {
+    position: relative;
+    width: 4.5rem;
+    background: rgb(var(--ink));
+    color: rgb(var(--paper));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 24px -14px rgb(0 0 0 / 0.6);
+  }
+  .chip-notch {
+    position: absolute;
+    top: -1px;
+    left: 50%;
+    width: 1.4rem;
+    height: 0.7rem;
+    transform: translateX(-50%);
+    background: rgb(var(--sheet));
+    border-radius: 0 0 999px 999px;
+  }
+  .chip-dot {
+    position: absolute;
+    top: 1.4rem;
+    left: 0.6rem;
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: rgb(var(--signal));
+  }
+  .chip-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
+
+  /* Highlighting a bus */
+  .stack-board[data-active]:not([data-active=""]) .pin {
+    opacity: 0.35;
+  }
+  .stack-board .pin.is-lit {
+    opacity: 1;
+    font-weight: 700;
+  }
+  .pin.is-lit .pin-leg {
+    background: rgb(var(--signal));
+    border-color: rgb(var(--signal));
+  }
+  .pin.is-lit .pin-num {
+    color: rgb(var(--signal-ink));
+  }
+  .group-btn {
+    transition: color 200ms ease;
+  }
+  .group-btn:hover,
+  .group-btn[aria-pressed="true"] {
+    color: rgb(var(--signal-ink));
+  }
+  .group-btn[aria-pressed="true"] .group-swatch,
+  .group-btn:hover .group-swatch {
+    background: rgb(var(--signal));
+    border-color: rgb(var(--signal));
+  }
+
+  @media (max-width: 480px) {
+    .chip {
+      --pin-h: 1.7rem;
+      font-size: 0.78rem;
+    }
+    .pin {
+      gap: 0.3rem;
+    }
+    .pin-num {
+      width: 1.1rem;
+      font-size: 0.62rem;
+    }
+    .pin-leg {
+      width: 1rem;
+    }
+    .chip-body {
+      width: 3rem;
+    }
+    .chip-text {
+      font-size: 0.66rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pin,
+    .pin-leg {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>(".stack-board").forEach((board) => {
+    const pins = Array.from(board.querySelectorAll<HTMLElement>(".pin"));
+    const buttons = Array.from(board.querySelectorAll<HTMLButtonElement>(".group-btn"));
+    let locked = "";
+
+    const show = (group: string) => {
+      board.dataset.active = group;
+      pins.forEach((p) => p.classList.toggle("is-lit", group !== "" && p.dataset.group === group));
+    };
+
+    buttons.forEach((btn) => {
+      const group = btn.dataset.group ?? "";
+      btn.addEventListener("mouseenter", () => show(group));
+      btn.addEventListener("mouseleave", () => show(locked));
+      btn.addEventListener("click", () => {
+        locked = locked === group ? "" : group;
+        buttons.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.group === locked)));
+        show(locked);
+      });
+    });
+
+    pins.forEach((pin) => {
+      pin.addEventListener("mouseenter", () => show(pin.dataset.group ?? ""));
+      pin.addEventListener("mouseleave", () => show(locked));
+    });
+  });
+</script>

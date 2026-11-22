@@ -1,0 +1,113 @@
+---
+import { getI18N } from "@/i18n/";
+import Icon from "@/icons/Icon.astro";
+import SheetSection from "./SheetSection.astro";
+
+const { currentLocale = "es" } = Astro;
+const c = getI18N({ currentLocale }).CONTACT;
+const downloads = [
+  { label: c.cvEs, href: "/documents/Alain Pereida Prado - CV.pdf", lang: "es" },
+  { label: c.cvEn, href: "/documents/Alain Pereida Prado - CV - English.pdf", lang: "en" },
+];
+const online = [
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/alain-pereida-prado-64b45b1b7", icon: "linkedin" as const },
+  { label: "GitHub", href: "https://github.com/alainpereida", icon: "github" as const },
+];
+---
+
+<SheetSection id="contact" title={c.title} intro={c.body}>
+  <p class="text-[clamp(1.75rem,3.6vw,2.75rem)] font-bold leading-tight tracking-[-0.02em]" style="text-wrap: balance;">
+    {c.lead}
+  </p>
+
+  <div class="mt-8 border-y rule-strong py-5">
+    <p class="text-sm text-muted">{c.emailLabel}</p>
+    <div class="mt-1 flex flex-wrap items-center gap-x-5 gap-y-3">
+      <a
+        href={`mailto:${c.email}`}
+        class="break-all text-[clamp(1.35rem,3vw,2.25rem)] font-bold text-signal-ink underline decoration-1 underline-offset-[0.2em] hover:decoration-2"
+      >
+        {c.email}
+      </a>
+      <button
+        type="button"
+        class="copy-email btn-secondary px-4 py-2 text-sm"
+        data-email={c.email}
+        data-copied={c.copied}
+        data-copy={c.copy}
+        aria-label={c.copyLabel}
+      >
+        <span class="copy-icon"><Icon name="copy" size={16} /></span>
+        <span class="check-icon hidden"><Icon name="check" size={16} /></span>
+        <span class="copy-text">{c.copy}</span>
+      </button>
+      <span class="copy-status sr-only" role="status" aria-live="polite"></span>
+    </div>
+  </div>
+
+  <div class="mt-10 grid gap-10 sm:grid-cols-2">
+    <div>
+      <h3 class="border-b rule-strong pb-2 font-bold">{c.cvTitle}</h3>
+      <ul>
+        {
+          downloads.map((d) => (
+            <li class="border-b hairline">
+              <a href={d.href} target="_blank" rel="noopener" hreflang={d.lang} class="flex items-center justify-between gap-4 py-3 link-ink">
+                {d.label}
+                <Icon name="download" size={18} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h3 class="border-b rule-strong pb-2 font-bold">{c.elsewhere}</h3>
+      <ul>
+        {
+          online.map((o) => (
+            <li class="border-b hairline">
+              <a href={o.href} target="_blank" rel="noopener" class="flex items-center justify-between gap-4 py-3 link-ink">
+                <span class="flex items-center gap-3">
+                  <Icon name={o.icon} size={18} />
+                  {o.label}
+                </span>
+                <Icon name="arrow-up-right" size={18} />
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</SheetSection>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>(".copy-email").forEach((btn) => {
+    const text = btn.querySelector(".copy-text");
+    const copyIcon = btn.querySelector(".copy-icon");
+    const checkIcon = btn.querySelector(".check-icon");
+    const status = btn.parentElement?.querySelector(".copy-status");
+    let timer: number | undefined;
+
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.email ?? "");
+      } catch {
+        window.location.href = `mailto:${btn.dataset.email}`;
+        return;
+      }
+      if (text) text.textContent = btn.dataset.copied ?? "";
+      if (status) status.textContent = btn.dataset.copied ?? "";
+      copyIcon?.classList.add("hidden");
+      checkIcon?.classList.remove("hidden");
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => {
+        if (text) text.textContent = btn.dataset.copy ?? "";
+        if (status) status.textContent = "";
+        copyIcon?.classList.remove("hidden");
+        checkIcon?.classList.add("hidden");
+      }, 2000);
+    });
+  });
+</script>

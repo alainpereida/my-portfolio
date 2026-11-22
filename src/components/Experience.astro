@@ -1,32 +1,109 @@
 ---
 import { getI18N } from "@/i18n/";
+import SheetSection from "./SheetSection.astro";
 
-const { currentLocale } = Astro;
+const { currentLocale = "es" } = Astro;
 const i18n = getI18N({ currentLocale });
+const e = i18n.EXPERIENCE;
+const total = e.items.length;
 ---
 
-<h2 class="text-2xl font-bold mb-6 text-secondary">
-  {i18n.EXPERIENCE_TITLE}
-</h2>
+<SheetSection id="experience" title={e.title} intro={e.intro}>
+  <ol class="trace-list relative">
+    {
+      e.items.map((job, i) => (
+        <li class="relative grid gap-2 pb-10 pl-10 last:pb-0 sm:grid-cols-[7.5rem_minmax(0,1fr)] sm:gap-6">
+          {i < total - 1 && <span class="trace" style={`--i:${i}`} aria-hidden="true" />}
+          <span class={`node ${job.current ? "node-current" : ""}`} aria-hidden="true" />
+          <div class="text-sm">
+            <span class="font-bold">
+              {i18n.SHEET.rev} {total - i}.0
+            </span>
+            {job.current && (
+              <span class="ml-2 bg-signal px-1.5 py-0.5 text-xs font-bold text-on-signal">{e.current}</span>
+            )}
+          </div>
+          <div class="border-b hairline pb-8">
+            <h3 class="text-xl font-bold leading-snug sm:text-2xl">
+              {job.position} <span class="font-light text-muted">·</span> {job.company}
+            </h3>
+            <p class="mt-1 text-sm text-muted">
+              <time>{job.date}</time>
+            </p>
+            <p class="mt-3 max-w-[40rem] leading-relaxed" style="text-wrap: pretty;">
+              {job.description}
+            </p>
+          </div>
+        </li>
+      ))
+    }
+  </ol>
+</SheetSection>
 
-<ol class="relative border-s border-secondary">
-  {
-    i18n.EXPERIENCE.map((job) => (
-      <li class="mb-10 ms-4">
-        <div class="absolute w-3 h-3 bg-secondary rounded-full mt-1.5 -start-1.5 border border-secondary" />
-        <time class="mb-1 text-sm font-normal leading-none text-gray-400">
-          {job.date}
-        </time>
-        <h3 class="text-lg font-semibold text-secondary">
-          {job.position} | <span class="text-white">{job.company}</span>
-        </h3>
-        <p
-          class="mb-4 text-base font-normal text-white leading-6"
-          style="text-wrap: balance;"
-        >
-          {job.description}
-        </p>
-      </li>
-    ))
+<style>
+  .trace {
+    position: absolute;
+    left: 7px;
+    top: 0.5rem;
+    bottom: -0.5rem;
+    width: 3px;
+    background: rgb(var(--signal));
+    transform-origin: top;
+    transition: transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+    transition-delay: calc(var(--i) * 450ms);
   }
-</ol>
+  .trace-list.is-pending .trace {
+    transform: scaleY(0);
+  }
+  .node {
+    position: absolute;
+    left: 0;
+    top: 0.2rem;
+    width: 17px;
+    height: 17px;
+    border-radius: 999px;
+    border: 3px solid rgb(var(--signal));
+    background: rgb(var(--paper));
+    z-index: 1;
+  }
+  .node-current {
+    background: rgb(var(--signal));
+  }
+  .trace-list li:last-child > div:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .trace {
+      transition: none;
+    }
+    .trace-list.is-pending .trace {
+      transform: none;
+    }
+  }
+</style>
+
+<script>
+  // The trace is drawn by default; only retract it when JS can draw it in.
+  const lists = document.querySelectorAll<HTMLElement>(".trace-list");
+  if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.remove("is-pending");
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.15 }
+    );
+    lists.forEach((list) => {
+      const rect = list.getBoundingClientRect();
+      if (rect.top > window.innerHeight) {
+        list.classList.add("is-pending");
+        io.observe(list);
+      }
+    });
+  }
+</script>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  intro?: string;
+  wide?: boolean;
+}
+
+const { id, title, intro, wide = false } = Astro.props;
+---
+
+<section id={id} class="border-b rule-strong" aria-labelledby={`${id}-title`}>
+  <div class="mx-auto max-w-sheet px-4 sm:px-6">
+    <div class={`grid gap-8 py-14 md:py-20 ${wide ? "" : "lg:grid-cols-12 lg:gap-12"}`}>
+      <div class={wide ? "max-w-2xl" : "lg:col-span-4"}>
+        <div class={wide ? "" : "lg:sticky lg:top-24"}>
+          <h2
+            id={`${id}-title`}
+            class="text-[clamp(2.25rem,4.5vw,3.25rem)] font-bold leading-none tracking-[-0.03em]"
+            style="text-wrap: balance;"
+          >
+            {title}
+          </h2>
+          {intro && <p class="mt-4 max-w-[34rem] text-lg leading-relaxed text-muted" style="text-wrap: pretty;">{intro}</p>}
+        </div>
+      </div>
+      <div class={wide ? "" : "lg:col-span-8"}>
+        <slot />
+      </div>
+    </div>
+  </div>
+</section>

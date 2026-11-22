@@ -1,94 +1,213 @@
 {
-  "SEO_TITLE": "Premios ESLAND 2024 - Celebrando lo mejor del streaming y los creadores de contenido",
-  "SEO_DESCRIPTION": "Descubre a los mejores creadores de contenido de España, Latinoamérica y Andorra. ¡Vota por tus favoritos! Celebra la innovación y el talento de Twitch, YouTube y más",
-  "HEADER_ME": "I'm",
-  "HEADER_NAME": "Alain Pereida Prado",
-  "HEADER_TITLE": "Web Developer",
-  "HEADER_SUB_TITLE": "+3 years of experience in web development. I'm passionate about creating and developing web applications.",
-  "HEADER_BUTTON_CV": "Download my CV",
-  "LAST_WORKS_TITLE": "Latest Works",
-  "LAST_WORKS_SUB_TITLE": "These are some of the projects I've worked on recently",
-  "PROJECTS": [
-    {
-      "title": "Identidad UABC",
-      "description": "Mobile application development for UABC identity management. Developed using Flutter as a freelance project for e-sol.",
-      "href": "https://identidaduabc.com/",
-      "image": "img/identidaduabc_icon.png",
-      "technologies": [
-        "Flutter",
-        "Dart"
-      ]
-    },
-    {
-      "title": "Start Market App",
-      "description": "Mobile application development for sales management in a grocery store. Developed with Flutter as a freelance project for e-sol.",
-      "image": "img/starmarket_icon.png",
-      "technologies": [
-        "Flutter",
-        "Dart"
-      ]
-    },
-    {
-      "title": "Presta",
-      "description": "Development and deployment of a web app portal for laboratory equipment loan control at UABC. Built with Vue.js and Express.js, and deployed on university servers.",
-      "href": "https://yaqui.mxl.uabc.mx/login",
-      "image": "img/presta.png",
-      "technologies": [
-        "Vue.js",
-        "Express.js",
-        "MySQL",
-        "Vuetify"
-      ]
-    },
-    {
-      "title": "DigiTabWeb",
-      "description": "Development and deployment of a web portal for managing publications at the UABC Engineering Institute. Developed with Vue.js and Express.js, and deployed on university servers.",
-      "image": "img/instituto-de-ingeniería.png",
-      "href": "http://nova.mxl.uabc.mx/view/ii",
-      "technologies": [
-        "Vue.js",
-        "Express.js",
-        "MySQL",
-        "Vuetify"
-      ]
-    },
-    {
-      "title": "Academic Indicators System",
-      "description": "Development, maintenance, and deployment of an academic indicator system for the UABC Engineering Institute. Developed with Vue.js and Express.js, and deployed on university servers.",
-      "image": "img/sistema-de-indicadores-académicos.png",
-      "technologies": [
-        "Vue.js",
-        "Express.js",
-        "MySQL",
-        "Vuetify"
-      ]
+  "SEO_TITLE": "Alain Pereida Prado · Full-stack Web & .NET Developer",
+  "SEO_DESCRIPTION": "Full-stack web developer with 5+ years of experience in .NET, Vue.js, Node.js and Flutter. Open to roles and freelance web and mobile projects.",
+  "CV_URL": "/documents/Alain Pereida Prado - CV - English.pdf",
+  "SKIP": "Skip to content",
+  "NAV": {
+    "about": "About",
+    "services": "Services",
+    "stack": "Stack",
+    "projects": "Projects",
+    "experience": "Experience",
+    "contact": "Contact"
+  },
+  "THEME": {
+    "toLight": "Switch to light theme",
+    "toDark": "Switch to dark theme"
+  },
+  "LANG_LABEL": "Language",
+  "NAV_ARIA": { "main": "Main", "sections": "Sections" },
+  "SHEET": {
+    "kind": "Datasheet",
+    "rev": "Rev",
+    "page": "Sheet 1 of 1"
+  },
+  "HERO": {
+    "name": "Alain Pereida Prado",
+    "role": "Full-stack Web Developer · .NET",
+    "summary": "5+ years building web applications, APIs and mobile apps that run in production, with .NET, Vue.js, Node.js and Flutter.",
+    "specsLabel": "Specifications",
+    "specs": [
+      { "k": "Experience", "v": "5+ years" },
+      { "k": "Current role", "v": ".NET Developer · Reliant Parking" },
+      { "k": "Focus", "v": ".NET · Vue.js · Node.js · Flutter" },
+      { "k": "Languages", "v": "Spanish · English" }
+    ],
+    "ctaCv": "Download CV",
+    "ctaContact": "Get in touch",
+    "figure": "Fig. 1 — Alain Pereida Prado, front view. Scale 1:1.",
+    "dimTop": "2021 — 2026",
+    "dimSide": "Full-stack",
+    "photoAlt": "Illustration of Alain Pereida Prado smiling with a cup of coffee"
+  },
+  "ABOUT": {
+    "title": "About",
+    "paragraphs": [
+      "I'm a full-stack web developer. I currently work as a .NET Developer at Reliant Parking, building and maintaining web and mobile applications with .NET, C#, SQL Server, AWS and Vue.js.",
+      "Before that I built RESTful APIs for over 100,000 users at Pixzelle Studio, took an autonomous drone monitoring system to production at Inercy, and developed web systems for UABC."
+    ],
+    "featuresTitle": "Features",
+    "features": [
+      "RESTful APIs serving 100,000+ users",
+      "Web and mobile apps in production",
+      "Monolithic and microservice architectures",
+      "Cross-platform apps with Flutter",
+      "Server resource optimization",
+      "Teamwork with Scrum"
+    ]
+  },
+  "SERVICES": {
+    "title": "Freelance services",
+    "intro": "If you have an idea, or a system that needs to grow, I can help from technical design to deployment.",
+    "headers": { "service": "Service", "description": "What it covers", "stack": "Typical stack" },
+    "items": [
+      {
+        "name": "Web applications",
+        "description": "Custom portals, admin dashboards and internal systems.",
+        "stack": "Vue.js · React · ASP.NET Core · Astro"
+      },
+      {
+        "name": "Mobile apps",
+        "description": "Android and iOS apps from a single codebase.",
+        "stack": "Flutter · Dart · Firebase"
+      },
+      {
+        "name": "APIs & backend",
+        "description": "REST and GraphQL services, integrations, authentication and PDF generation.",
+        "stack": ".NET · Node.js · NestJS · Express"
+      },
+      {
+        "name": "Data & cloud",
+        "description": "Database modeling, deployment and server optimization.",
+        "stack": "PostgreSQL · SQL Server · AWS · Azure · Docker"
+      }
+    ],
+    "cta": "Tell me about your project",
+    "mailSubject": "Freelance project"
+  },
+  "STACK": {
+    "title": "Tech stack",
+    "intro": "The technologies I work with, grouped like the pins of a chip. Pick a group to highlight it.",
+    "groupsLabel": "Groups",
+    "pins": "Pins",
+    "groups": {
+      "backend": "Backend",
+      "frontend": "Frontend",
+      "mobile": "Mobile",
+      "data": "Databases",
+      "cloud": "Cloud & DevOps",
+      "cms": "CMS"
     }
-  ],
-  "EXPERIENCE_TITLE": "Experience",
-  "EXPERIENCE": [
-    {
-      "date": "February 2024 - Present",
-      "position": ".NET Developer",
-      "company": "Reliant Parking",
-      "description": "Involved in the development and maintenance of web and mobile applications. Utilizing solutions with .NET, .NET Core, C#, SQL Server, AWS, Vue.js, and more. Implementation of RESTful services. Worked under Scrum methodology. Integrated PDF generation systems."
+  },
+  "PROJECTS": {
+    "title": "Projects",
+    "intro": "Recent work on mobile apps and web systems.",
+    "labels": {
+      "type": "Type",
+      "client": "Client",
+      "stack": "Stack",
+      "visit": "View project",
+      "fig": "Fig."
     },
-    {
-      "date": "September 2022 - February 2024",
-      "position": "Web Developer",
-      "company": "Pixzelle Studio",
-      "description": "Participated in software development using both monolithic and microservices architectures. Delivered RESTful API developments for over 100,000 users. Configured server resource optimization. Used Scrum methodology."
-    },
-    {
-      "date": "October 2022 - August 2021",
-      "position": "Software Developer",
-      "company": "Inercy",
-      "description": "Participated in the development and production launch of an autonomous drone monitoring system. Worked on an Android mobile app and a web system built with ASP.NET Core. Performed application deployments and staff training."
-    },
-    {
-      "date": "January 2022 - March 2021",
-      "position": "Intern",
-      "company": "Honeywell",
-      "description": "Creation of high-performance reports based on company metrics. Responsible for identifying improvements in reporting and proposing ideas for new data visualizations."
-    }
-  ]
+    "items": [
+      {
+        "title": "Identidad UABC",
+        "description": "Mobile app for identity management for the UABC community, built with Flutter.",
+        "href": "https://identidaduabc.com/",
+        "image": "/img/identidad_uabc.png",
+        "kind": "mobile",
+        "type": "Mobile app · Freelance",
+        "client": "e-sol",
+        "technologies": ["Flutter", "Dart"]
+      },
+      {
+        "title": "Star Market App",
+        "description": "Mobile app for managing product sales in a grocery store, built with Flutter.",
+        "image": "/img/start_market.png",
+        "kind": "mobile",
+        "type": "Mobile app · Freelance",
+        "client": "e-sol",
+        "technologies": ["Flutter", "Dart"]
+      },
+      {
+        "title": "Presta",
+        "description": "Web portal for managing laboratory equipment loans at UABC. Built and deployed on university servers.",
+        "href": "https://yaqui.mxl.uabc.mx/login",
+        "image": "/img/presta.png",
+        "kind": "web",
+        "type": "Web application",
+        "client": "UABC",
+        "technologies": ["Vue.js", "Express.js", "MySQL", "Vuetify"]
+      },
+      {
+        "title": "DigiTabWeb",
+        "description": "Web portal for managing publications at the UABC Engineering Institute.",
+        "href": "http://nova.mxl.uabc.mx/view/ii",
+        "image": "/img/instituto-de-ingeniería.png",
+        "kind": "web",
+        "type": "Web portal",
+        "client": "UABC Engineering Institute",
+        "technologies": ["Vue.js", "Express.js", "MySQL", "Vuetify"]
+      },
+      {
+        "title": "Academic Indicators System",
+        "description": "Development, maintenance and deployment of an academic indicators system for the UABC Engineering Institute.",
+        "image": "/img/sistema-de-indicadores-académicos.png",
+        "kind": "web",
+        "type": "Web system",
+        "client": "UABC Engineering Institute",
+        "technologies": ["Vue.js", "Express.js", "MySQL", "Vuetify"]
+      }
+    ]
+  },
+  "EXPERIENCE": {
+    "title": "Experience",
+    "intro": "Revision history, newest first.",
+    "current": "Current",
+    "items": [
+      {
+        "date": "February 2024 — Present",
+        "position": ".NET Developer",
+        "company": "Reliant Parking",
+        "current": true,
+        "description": "Building and maintaining web and mobile applications with .NET, .NET Core, C#, SQL Server, AWS and Vue.js. RESTful services, a PDF generation system integration, and Scrum."
+      },
+      {
+        "date": "September 2022 — February 2024",
+        "position": "Web Developer",
+        "company": "Pixzelle Studio",
+        "description": "Software development with monolithic and microservice architectures, delivering RESTful APIs for over 100,000 users. Server resource configuration and optimization. Scrum."
+      },
+      {
+        "date": "August 2021 — October 2022",
+        "position": "Software Developer",
+        "company": "Inercy",
+        "description": "Took an autonomous drone monitoring system to production: an Android mobile app and an ASP.NET Core web system, plus deployments and staff training."
+      },
+      {
+        "date": "March 2021 — January 2022",
+        "position": "Intern",
+        "company": "Honeywell",
+        "description": "Built high-performance reports from company metrics and proposed improvements and new reports."
+      }
+    ]
+  },
+  "CONTACT": {
+    "title": "Contact",
+    "lead": "Have a role or a project? Let's talk.",
+    "body": "I reply by email or LinkedIn. For my full background, download the CV.",
+    "emailLabel": "Email",
+    "email": "alain.pereida@gmail.com",
+    "copy": "Copy",
+    "copied": "Copied",
+    "copyLabel": "Copy email to clipboard",
+    "cvTitle": "Downloads",
+    "cvEs": "CV en español (PDF)",
+    "cvEn": "CV in English (PDF)",
+    "elsewhere": "Online"
+  },
+  "FOOTER": {
+    "rights": "Alain Pereida Prado",
+    "built": "Built with Astro and Tailwind CSS"
+  }
 }

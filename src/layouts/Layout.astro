@@ -1,43 +1,41 @@
 ---
-import Seo from '../components/Seo.astro';
-import '../styles/tailwind.css';
+import Seo from "../components/Seo.astro";
+import "../styles/tailwind.css";
 
-const { currentLocale } = Astro
+interface Props {
+  title: string;
+  description: string;
+}
 
-const { image, frontmatter, robots } = Astro.props;
+const { currentLocale = "es" } = Astro;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={currentLocale}>
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<Seo url={Astro.url} {image} {frontmatter} {robots} />
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preload" href="/fonts/akzidenz-grotesk-bold.ttf" as="font" type="font/ttf" crossorigin />
+    <link rel="preload" href="/fonts/akzidenz-grotesk-light.ttf" as="font" type="font/ttf" crossorigin />
+    <meta name="theme-color" content="#eef0ec" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#080f0c" media="(prefers-color-scheme: dark)" />
+    <script is:inline>
+      (() => {
+        let theme;
+        try {
+          theme = localStorage.getItem("theme");
+        } catch {}
+        if (theme !== "light" && theme !== "dark") {
+          theme = matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+        document.documentElement.dataset.theme = theme;
+      })();
+    </script>
+    <Seo {title} {description} locale={currentLocale} />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-<style is:global>
-	html {
-		font-family: "GroteskLight", system-ui, sans-serif;
-		background: #13151a;
-		color: white;
-	}
-	@font-face {
-		font-family: "GroteskLight";
-		src: url("../fonts/akzidenz-grotesk-light.ttf");
-		font-weight: lighter;
-		font-style: normal;
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: "GroteskBold";
-		src: url("../fonts/akzidenz-grotesk-bold.ttf");
-		font-weight: bold;
-		font-style: normal;
-		font-display: swap;
-	}
-</style>
